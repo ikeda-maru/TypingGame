@@ -25,6 +25,12 @@ const textLists = [
 
 // ランダムなテキストを表示
 const createText = () => {
+
+  // 正タイプした文字列をクリア
+  typed = '';
+  typedfield.textContent = typed;
+
+
   // 配列のインデックス数からランダムな数値を生成し、変数に代入する
   let random = Math.floor(Math.random() * textLists.length);
 
@@ -43,6 +49,11 @@ const keyPress = e => {
   untyped = untyped.substring(1);
   typedfield.textContent   = typed;
   untypedfield.textContent = untyped;
+
+  // テキストがなくなったら新しいテキストを表示
+  if (untyped === '') {
+    createText();
+  }
 };
 
 // タイピングスキルのランクを判定
