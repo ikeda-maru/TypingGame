@@ -61,7 +61,7 @@ document.getElementByid(id 属性の値);
 console.log(Math.floor(Math.random() * textLists.length));
 ```
 
-## キー入力を判定
+## キー入力で文字列を取得
 やること
 - 入力した文字を取得する
 - 正タイプであれば文字色を変える
@@ -127,4 +127,23 @@ text.substring(0, 1); // Hが抽出
 - 変数`untyped`に2文字目以降の文字列を再代入(変数`untyped`の先頭文字を削除)
 - 定数`typedfield`の`textContent`プロパティに変数`typed`を代入する
 - 定数`untypedfield`の`textContent`プロパティに変数`untyped`を代入する
+
+## キー入力で入力されたキーを判定
+
+### 誤タイプのときは反応させないという処理
+入力された文字は`e.key`で取得できる。
+入力された文字と比較するテキストの先頭文字を取得する必要がある。
+→`substring(0,1)`で取得できる。
+
+関数`keyPress`を編集
+- 入力された文字(`e.key`)と変数`untyped`の先頭文字を比較
+- 不一致の場合、終了(`return`)する
+
+### 誤タイプであることを示す
+1. `getElementById()`メソッドで背景部分のHTML要素を取得する
+2. 関数`keyPress`を編集し、誤タイプのときに背景色を変更する。
+    `classList.add()`メソッドでclass属性(`mistyped`)を追加し、背景色変更。
+3. 関数`keyPress`を編集し、正タイプのときに背景色を元に戻す。
+    `classList.remove()`メソッドでclass属性(`mistyped`)を削除し、背景色を元に戻す。
+
 
